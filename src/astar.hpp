@@ -5,6 +5,9 @@
 #include <limits>
 #include <unordered_map>
 #include <functional>
+#include <cmath>       // <- for std::abs
+#include <algorithm>   // <- for std::reverse
+
 
 struct Node {
     int r, c;
