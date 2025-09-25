@@ -1,0 +1,11 @@
+# Build
+/build/
+*.o
+*.obj
+*.exe
+*.log
+
+# Mac / IDE
+.DS_Store
+.vscode/
+.idea/
