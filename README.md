@@ -3,36 +3,26 @@
 本倉庫包含我論文的兩支最終程式（皆**無需外部輸入、直接執行**），以及論文用數據檔：
 - `250919repath.cpp` → 動態重規劃展示（Improved A* + 事件阻塞 + 等待成本）
 - `250604statisticlog.cpp` → 批次統計（Traditional A* vs Improved A*）
-- `results/results_cleaned_forPAPER.csv` → 論文實際使用的 5,000 筆清洗樣本  
+- `results/results_cleaned_forPAPER.csv` → 論文實際使用的 5,000 筆清洗樣本
   > 完整 50,000 筆：`resultsFinal.csv`（將於 Releases 提供，或依需求加入 repo）
 
-## TL;DR
-- 改良 A*：在評估中引入等待成本 / 封閉格剩餘時間；支援突發事件下的動態重規劃
-- 論文結論（摘要）：平均等待時間顯著下降；動態事件情境下重規劃成功率高（詳見論文）
+## 1. TL;DR
+- 平均等待時間改善 **62.02%**（摘自《Final_Thesis.pdf》：Improved A* 相較傳統 A* 的整體平均等待時間由 3.600 秒降至 1.368 秒）
+- 動態重規劃成功率 **100%**（摘自《Final_Thesis.pdf》：動態重規劃機制在受阻時仍能維持穩定即時性與成功率）
 
----
-
-## Build
+## 2. Quickstart
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
+scripts/reproduce.ps1          # Windows
+bash scripts/reproduce.sh      # Linux / Git Bash
 ```
 
-## Run (no external input)
+## 3. Reproduce
+執行上述腳本後會：
 
-```
-# 動態重規劃展示
-./build/250919repath            # Windows: .\build\250919repath.exe
-
-# 批次統計（Traditional vs Improved）
-./build/250604statisticlog      # Windows: .\build\250604statisticlog.exe
-```
-
-> 保存主控台輸出：
->
-> ```bash
-> ./build/250604statisticlog > results_console.txt
-> ```
+* 以 CMake 自動建置兩支主程式
+* 依序執行 `250919repath` 與 `250604statisticlog`
+* 讀取 `results/results_cleaned_forPAPER.csv`，輸出統計圖於 `docs/figs/`
+* 產出論文中使用的數據與圖表，可直接對照最終論文結果
 
 ## Data
 
@@ -49,10 +39,16 @@ smart-parking-improved-astar/
 │  └─ 250604statisticlog.cpp
 ├─ results/
 │  └─ results_cleaned_forPAPER.csv
+├─ docs/
+│  ├─ Final_Thesis.pdf
+│  └─ figs/
+├─ scripts/
+│  ├─ reproduce.ps1
+│  ├─ reproduce.sh
+│  └─ plot_results.py
 ├─ CMakeLists.txt
 └─ README.md
 ```
-
 
 ## Citation
 
