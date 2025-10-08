@@ -42,7 +42,7 @@ cmake --build build -j
 
 ## Repo 結構
 
-
+```text
 smart-parking-improved-astar/
 ├─ src/
 │  ├─ 250919repath.cpp
@@ -51,7 +51,7 @@ smart-parking-improved-astar/
 │  └─ results_cleaned_forPAPER.csv
 ├─ CMakeLists.txt
 └─ README.md
-
+```
 
 
 ## Citation
